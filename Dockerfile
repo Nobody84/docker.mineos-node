@@ -1,12 +1,15 @@
 FROM ubuntu
 MAINTAINER TopCat <topmailcat@googlemail.com>
 
+# update system
+RUN apt-get update && apt-get upgrade -y
+
 #update and accept all prompts
 RUN apt-get update && apt-get install -y \
   supervisor \
   rdiff-backup \
   screen \
-  openjdk-9-jre \
+  openjdk-8-jre \
   rsync \
   git \
   curl \
