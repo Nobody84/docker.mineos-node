@@ -1,6 +1,18 @@
 #!/bin/bash
 set -eo pipefail
 
+if [ -z "$ACCEPT_ORACLE_LICENSE" ]; then  
+  echo >&2 'You need to include ACCEPT_ORACLE_LICENSE=true in order to start this container.'
+  echo >&2 'Visit http://www.oracle.com/technetwork/java/javase/terms/license/index.html'
+  exit 1
+fi
+
+if [[ "$ACCEPT_ORACLE_LICENSE" =~ "yes" ]]; then
+  echo >&2 'You need to include ACCEPT_ORACLE_LICENSE=true in order to start this container.'
+  echo >&2 'Visit http://www.oracle.com/technetwork/java/javase/terms/license/index.html'
+  exit 1
+fi
+
 if [ -z "$USER_PASSWORD" ]; then
   echo >&2 'You need to specify USER_PASSWORD'
   exit 1

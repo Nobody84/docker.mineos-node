@@ -2,15 +2,16 @@
 
 ![Server Logo](https://vignette2.wikia.nocookie.net/lotr-minecraft-mod-exiles/images/f/f2/Minecraft_server_setup.png/revision/latest?cb=20160911172557)
 ## Webbased hosting solution for Minecraft server
-This container based on the official ubuntu docker container and uses the mineos-node implementation from hexparrot.
-https://github.com/hexparrot/mineos-node
-
 MineOS is a server front-end to ease managing Minecraft administrative tasks. This iteration using Node.js aims to enhance previous MineOS scripts (Python-based), by leveraging the event-triggering, asyncronous model of Node.JS and websockets.
 
 This allows the front-end to provide system health, disk and memory usage, and logging in real-time.
 
 This has been tested on Debian, Ubuntu, ArchLinux, and FreeBSD and should work on all variants, Linux or BSD.
 
+This container based on the official ubuntu docker container and uses the mineos-node implementation from hexparrot.
+https://github.com/hexparrot/mineos-node
+
+Because this container uses the Oracle Java SE Runtime Environment you need to accept the Oracle Binary Code License Agreement for Java SE (http://www.oracle.com/technetwork/java/javase/terms/license/index.html).
 
 ## Volumes
 * the path to store your data
@@ -22,6 +23,11 @@ This has been tested on Debian, Ubuntu, ArchLinux, and FreeBSD and should work o
 -v /mnt/user/data/mineos/certs:/etc/ssl/certs
 ```
 ## Environment variables
+* Oracle Binary Code License Agreement for the Java SE Platform Products and JavaFX
+http://www.oracle.com/technetwork/java/javase/terms/license/index.html
+```
+-e ACCEPT_ORACLE_LICENSE=yes
+```
 * MineOS username
 ```
 -e USER_PASSWORD=admin
