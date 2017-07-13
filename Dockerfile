@@ -65,8 +65,7 @@ RUN curl https://deb.nodesource.com/node_4.x/pool/main/n/nodejs/nodejs_4.6.2-1no
 #download mineos from github
 RUN mkdir /usr/games/minecraft \
   && cd /usr/games/minecraft \
-  && git clone https://github.com/hexparrot/mineos-node.git . \
-  && git reset --hard cc4dac5b5ea1a31de85291fccb74032d32a72386 \ 
+  && git clone --depth=1 https://github.com/hexparrot/mineos-node.git . \
   && chmod +x webui.js mineos_console.js service.js
 
 #build npm deps and clean up apt for image minimalization
