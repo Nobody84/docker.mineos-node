@@ -3,6 +3,8 @@ MAINTAINER TopCat <topmailcat@googlemail.com>
 
 ENV DEBIAN_FRONTEND noninteractive 
 
+ENV MINEOS_VERSION v1.1.7
+
 ENV VERSION 8 
 ENV UPDATE 131 
 ENV BUILD 11 
@@ -16,7 +18,7 @@ ENV OPENSSL_VERSION 1.0.2j
 # update system
 RUN apt-get update && apt-get upgrade -y
 
-#update and accept all prompts
+# update and accept all prompts
 RUN apt-get update && apt-get install -y \
   supervisor \
   rdiff-backup \
@@ -65,7 +67,12 @@ RUN curl https://deb.nodesource.com/node_4.x/pool/main/n/nodejs/nodejs_4.6.2-1no
 #download mineos from github
 RUN mkdir /usr/games/minecraft \
   && cd /usr/games/minecraft \
+<<<<<<< HEAD
+  && git clone https://github.com/hexparrot/mineos-node.git . \
+  && git checkout tags/"${MINEOS_VERSION}" -b release \ 
+=======
   && git clone --depth=1 https://github.com/hexparrot/mineos-node.git . \
+>>>>>>> e3b1650054b8051454a630e5a6bb8a1aa67e11b8
   && chmod +x webui.js mineos_console.js service.js
 
 #build npm deps and clean up apt for image minimalization
